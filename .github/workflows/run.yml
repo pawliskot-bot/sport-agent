@@ -1,0 +1,26 @@
+name: Sport Agent Runner
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # Uruchamia się codziennie o 8:00 UTC
+  workflow_dispatch: # Pozwala na ręczne uruchomienie przycisku na GitHubie
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobranie kodu z repozytorium
+        uses: actions/checkout@v4
+
+      - name: Konfiguracja Pythona
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalacja bibliotek Google GenAI
+        run: pip install google-genai
+
+      - name: Uruchomienie agenta sportowego
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python agent.py
