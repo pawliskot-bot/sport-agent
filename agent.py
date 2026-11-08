@@ -10,7 +10,7 @@ client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 # 2. Generowanie raportu przez model z wykorzystaniem wyszukiwarki
 response = client.models.generate_content(
-    model="gemini-3.8-flash",
+    model="gemini-2.0-flash",
     contents=(
         "Znajdź nadchodzące wydarzenia sportowe w mieście Oława na najbliższe"
         " dni."
