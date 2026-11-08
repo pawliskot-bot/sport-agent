@@ -4,6 +4,8 @@ import urllib.parse
 import urllib.request
 from google import genai
 from google.genai import types
+import time
+time.sleep(4) # Odczekaj kilka sekund przed kolejnym zapytaniem
 
 # 1. Inicjalizacja klienta Gemini
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
